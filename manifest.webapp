@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "ProjectP",
+  "launch_path": "/index.html",
+  "description": "Party",
+  "developer": {
+    "name": "Benoît Belz",
+    "url": "http://www.lucca.fr/"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "fr",
+  "permissions": {
+  },
+  "locales": {
+    "fr": {
+      "name": "ProjectP",
+      "description": "Party"
+    },
+    "en": {
+      "name": "ProjectP",
+      "description": "Party"
+    }
+  }
+}

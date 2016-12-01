@@ -1,0 +1,18 @@
+<header>
+    <span id="headerTitle">
+        <md-icon> library_music </md-icon> {{ vm.title }}
+    </span>
+    <span id="headerActions">
+        <span ng-if="vm.loggedUser">
+            <span class="user-pic" ng-style="{'background-image': 'url({{vm.loggedUser.photoURL}})'}"></span>
+            {{ vm.loggedUser.displayName}}
+        </span>
+        <md-button ng-click="vm.changeAuthState()">
+            <span ng-if="!vm.loggedUser">
+                <md-icon> account_circle </md-icon>
+                Sign-in with Google
+            </span>
+            <span ng-if="vm.loggedUser">Sign-out</span>
+        </md-button>
+    </span>
+</header>
