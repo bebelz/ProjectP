@@ -1,18 +1,22 @@
 <header>
-    <span id="headerTitle">
-        <md-icon> library_music </md-icon> {{ vm.title }}
-    </span>
-    <span id="headerActions">
-        <span ng-if="vm.loggedUser">
-            <span class="user-pic" ng-style="{'background-image': 'url({{vm.loggedUser.photoURL}})'}"></span>
-            {{ vm.loggedUser.displayName}}
-        </span>
-        <md-button ng-click="vm.changeAuthState()">
-            <span ng-if="!vm.loggedUser">
-                <md-icon> account_circle </md-icon>
-                Sign-in with Google
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">
+            <md-icon> library_music </md-icon> {{ vm.title }}
+            <span flex></span>
+            <span id="headerActions">
+                <span ng-show="vm.isUserLogged()">
+                    <!--<span class="user-pic" ng-style="{'background-image': 'url({{vm.loggedUser.photoURL}})'}"></span>-->
+                    {{ vm.getLoggedUser().displayName}}
+                </span>
+                <md-button ng-click="vm.changeAuthState()" aria-label="Login">
+                    <span ng-show="!vm.isUserLogged()">
+                        <md-icon> account_circle </md-icon>
+                        Sign-in with Google
+                    </span>
+                    <span ng-show="vm.isUserLogged()">Sign-out</span>
+                </md-button>
             </span>
-            <span ng-if="vm.loggedUser">Sign-out</span>
-        </md-button>
-    </span>
+        </div>
+    </md-toolbar>
+    {{ vm.auth.loggedUser }}
 </header>

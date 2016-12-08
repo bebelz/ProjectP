@@ -13,46 +13,37 @@ angular
 		}
     });
 
-function authController($firebaseAuth) {
-	// Init
-	var auth = $firebaseAuth();
-
+authController.$inject = ['authService'];
+function authController(authService) {
 	// Methods
     var vm = this;
-    vm.loggedUser = auth.$getAuth();
     vm.changeAuthState = changeAuthState;
     vm.login = login;
     vm.logout = logout;
+    vm.isUserLogged = isUserLogged;
+    vm.getLoggedUser = getLoggedUser;
 
-    function changeAuthState () {
-        if(vm.loggedUser) {
+    function changeAuthState() {
+        if(authService.getLoggedUser()) {
 			vm.logout();
         } else {
 			vm.login();
         }
     }
 
-    function login () {
-		var provider = new firebase.auth.GoogleAuthProvider();
-		auth.$signInWithPopup(provider)
-            .then(function(result) {
-                console.log(result);
-                vm.loggedUser = result.user;
-                console.log(vm.loggedUser.photoURL);
-            })
-            .catch(function(error) {
-                console.log("Error", error);
-            });
+    function login() {
+		authService.login();
     }
 
-    function logout () {
-		auth.$signOut()
-            .then(function() {
-                console.log("logged out");
-                vm.loggedUser = null;
-            })
-            .catch(function(error) {
-                console.log("Error", error);
-            });
+    function logout() {
+		authService.logout();
     }
+
+    function isUserLogged() {
+    	return authService.getLoggedUser() != null;
+	}
+
+	function getLoggedUser() {
+		return authService.getLoggedUser();
+	}
 }
