@@ -1,0 +1,14 @@
+<md-card>
+    <md-card-header>
+        <md-card-header-text>
+            <span class="md-title">{{ vm.details.title }}</span>
+            <span class="md-subhead">{{ vm.details.subtitle }}</span>
+        </md-card-header-text>
+    </md-card-header>
+    <md-card-content>
+        <p>{{ vm.details.description }}</p>
+    </md-card-content>
+    <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-href="/room/{{vm.details.$id}}" >Accéder</md-button>
+    </md-card-actions>
+</md-card>

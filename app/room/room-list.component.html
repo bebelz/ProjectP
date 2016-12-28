@@ -1,0 +1,9 @@
+<room-list-element
+        ng-repeat="room in vm.rooms"
+        details=room >
+</room-list-element>
+
+<md-button ng-click="vm.openCreateModal()"
+           class="md-fab" aria-label="Create room">
+    <md-icon> add </md-icon>
+</md-button>
